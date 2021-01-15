@@ -13,8 +13,8 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix='!', intents=intents)
-
+bot = commands.Bot(command_prefix='!', intents=intents,
+                    case_insensitive=True)
 
 @bot.event
 async def on_message(message):
@@ -29,6 +29,8 @@ async def on_message(message):
     elif 'dick' in (message.content).lower():
         woodmoji = bot.get_emoji(799274321163845683)
         await message.add_reaction(woodmoji)
+
+    await bot.process_commands(message)
 
 
 @bot.command(name='sexcheck',
