@@ -1,11 +1,12 @@
 import os
 import random
+import formatting
 
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from jsonhelpers import add_sex, get_sex
-from formatting import format_fucks
+
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -58,9 +59,20 @@ async def sex_check(ctx):
 
 @bot.command(name='sexboard',
             help='Impress your friends with how much more you fuck than them!')
-async def sex_board(ctx):
+async def sex_board(ctx, arg=''):
     data = get_sex()
-    board = format_fucks(data)
+
+    if arg == '':
+        board = formatting.format_alltime_fucks(data)
+    elif arg == 'today':
+        board = formatting.format_today_fucks(data)
+    elif arg == 'week':
+        board = formatting.format_week_fucks(data)
+    elif arg == 'month':
+        board = formatting.format_month_fucks(data)
+    elif arg == 'year':
+        board = formatting.format_year_fucks(data)
+
     response = board
 
     await ctx.send(response)
