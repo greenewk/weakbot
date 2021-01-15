@@ -1,4 +1,5 @@
 import json as js
+from datetime import datetime as dt
 
 def get_sex():
     with open('sexboard.json') as f:
@@ -8,9 +9,9 @@ def get_sex():
 def add_sex(user):
     try:
         data = get_sex()
-        data[user] += 1
+        data[user]['total'] += 1
     except KeyError:
-        data[user] = 1
+        data[user]['total'] = 1
     with open('sexboard.json', 'w') as f:
         js.dump(data, f)
 
