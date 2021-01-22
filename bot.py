@@ -34,6 +34,14 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
+@bot.command(name='pin',
+            help='Schedule your drug problem.')
+async def pin(ctx, drug, dose, freq, time):
+    user = ctx.author.name
+
+
+
+
 @bot.command(name='sexcheck',
             help='Scratch another notch in your digital bed-post, you stud!')
 async def sex_check(ctx):

@@ -13,6 +13,7 @@ def format_today_fucks(data):
     results = f'**TODAY\'S           FUCKS**\n'
     results += '-----------------------------\n'
     for user in data:
+        data[user]['days'].setdefault(today, 0)
         results += f' **{user}** \n     {data[user]["days"][today]} fucks\n'
         results += '-----------------------------\n'
     return results
@@ -25,6 +26,7 @@ def format_week_fucks(data):
     results = f'**WEEK      FUCKS      {wkyear}**\n'
     results += '-----------------------------\n'
     for user in data:
+        data[user]['weeks'].setdefault(wkyear, 0)
         results += f' **{user}** \n     {data[user]["weeks"][wkyear]} fucks\n'
         results += '-----------------------------\n'
     return results
@@ -38,6 +40,7 @@ def format_month_fucks(data):
     results = f'**MONTH      FUCKS      {monyear}**\n'
     results += '-----------------------------\n'
     for user in data:
+        data[user]['months'].setdefault(monyear, 0)
         results += f' **{user}** \n     {data[user]["months"][monyear]} fucks\n'
         results += '-----------------------------\n'
     return results
@@ -49,6 +52,7 @@ def format_year_fucks(data):
     results = f'**YEAR      FUCKS      {year}**\n'
     results += '-----------------------------\n'
     for user in data:
+        data[user]['years'].setdefault(year, 0)
         results += f' **{user}** \n     {data[user]["years"][year]} fucks\n'
         results += '-----------------------------\n'
     return results
