@@ -37,15 +37,16 @@ async def on_message(message):
 @bot.command(name='pin',
             help='Schedule your drug problem.')
 async def pin(ctx, drug, dose, freq, time):
-    user = ctx.author.name
-
+    user = ctx.author.display_name
+    username = ctx.author.name
 
 
 
 @bot.command(name='sexcheck',
             help='Scratch another notch in your digital bed-post, you stud!')
 async def sex_check(ctx):
-    user = ctx.author.name
+    user = ctx.author.display_name
+    username = ctx.author.name
 
     responses = [
         f'Congratulations on the sex, {user}!',
@@ -60,7 +61,7 @@ async def sex_check(ctx):
         f'Yeah? Next time why don\'t you just go fuck *yourself*, {user}?'
     ]
 
-    add_sex(user)    
+    add_sex(username)    
     response = random.choice(responses)
     await ctx.send(response)
 
